@@ -8,6 +8,6 @@ public:
 	void Render();
 	void CleanUp();
 private:
-	sf::RenderWindow& window;
+	sf::RenderWindow* window;
 };
 
