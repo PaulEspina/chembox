@@ -1,5 +1,10 @@
 #pragma once
 #include "State.h"
+
+#include <vector>
+
+#include "Dust.h"
+
 class GameState : public State
 {
 public:
@@ -8,6 +13,8 @@ public:
 	void Render();
 	void CleanUp();
 private:
-	sf::RenderWindow* window;
+	sf::RenderWindow* window = NULL;
+	std::vector<Particle*> particles;
+	Vec2 mouse;
 };
 

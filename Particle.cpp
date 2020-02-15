@@ -5,8 +5,9 @@ Particle::Particle()
 	pos = Vec2(0, 0);
 	vel = Vec2(0, 0);
 	accel = Vec2(0, 0);
-	mass = 1;
+	mass = 0;
 	particle_count++;
+	particle.setSize(sf::Vector2f(1, 1));
 }
 
 void Particle::ApplyForce(Vec2 force)
