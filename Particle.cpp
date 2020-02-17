@@ -8,6 +8,12 @@ Particle::Particle()
 	mass = 0;
 	particle_count++;
 	particle.setSize(sf::Vector2f(1, 1));
+	outside = false;
+}
+
+Particle::~Particle()
+{
+	particle_count--;
 }
 
 void Particle::ApplyForce(Vec2 force)

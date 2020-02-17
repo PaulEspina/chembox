@@ -3,6 +3,8 @@
 void GameState::Init(sf::RenderWindow& window)
 {
 	this->window = &window;
+	mouse_man = MouseManager();
+	particles = NULL;
 }
 
 void GameState::Update()
@@ -19,29 +21,58 @@ void GameState::Update()
 		}
 		if(event.type == sf::Event::MouseButtonPressed)
 		{
-			if(event.mouseButton.button == sf::Mouse::Left)
-			{
-				particles.push_back(new Dust(mouse));
-			}
+			mouse_man.keys[event.mouseButton.button] = true;
+		}
+		if(event.type == sf::Event::MouseButtonReleased)
+		{
+			mouse_man.keys[event.mouseButton.button] = false;
 		}
 	}
-	if(!particles.empty())
+	if(mouse_man.keys[sf::Mouse::Left])
 	{
-		for(unsigned int i = 0; i < particles.size(); i++)
+		Particle *particle = new Dust(mouse);
+		Particle **temp = new Particle*[Particle::particle_count];
+		for(unsigned int i = 0; i < Particle::particle_count - 1; i++)
 		{
+			temp[i] = particles[i];
+		}
+		temp[Particle::particle_count - 1] = particle;
+		delete[] particles;
+		particles = temp;
+	}
+	if(Particle::particle_count > 0)
+	{
+		for(unsigned int i = 0; i < Particle::particle_count; i++)
+		{
+			if(particles[i]->IsOutside())
+			{
+				delete particles[i];
+				if(i < Particle::particle_count - 1)
+				{
+					particles[i] = particles[i + 1];
+				}
+				Particle **temp = new Particle * [Particle::particle_count];
+				for(unsigned int i = 0; i < Particle::particle_count; i++)
+				{
+					temp[i] = particles[i];
+				}
+				delete[] particles;
+				particles = temp;
+			}
 			particles[i]->ApplyGravity(Vec2(0, 1));
 			particles[i]->ApplyDrag(1);
 			particles[i]->Update();
 		}
 	}
+	CheckBounds();
 }
 
 void GameState::Render()
 {
 	window->clear();
-	if(!particles.empty())
+	if(Particle::particle_count > 0)
 	{
-		for(unsigned int i = 0; i < particles.size(); i++)
+		for(unsigned int i = 0; i < Particle::particle_count; i++)
 		{
 			particles[i]->Render(*window);
 		}
@@ -51,11 +82,26 @@ void GameState::Render()
 
 void GameState::CleanUp()
 {
-	if(!particles.empty())
+	if(Particle::particle_count > 0)
 	{
-		for(unsigned int i = 0; i < particles.size(); i++)
+		for(unsigned int i = 0; i < Particle::particle_count; i++)
 		{
 			delete particles[i];
+		}
+	}
+}
+
+void GameState::CheckBounds()
+{
+	if(Particle::particle_count > 0)
+	{
+		for(unsigned int i = 0; i < Particle::particle_count; i++)
+		{
+			if(particles[i]->pos.x > window->getSize().x || particles[i]->pos.x < 0 ||
+			   particles[i]->pos.y > window->getSize().y || particles[i]->pos.y < 0)
+			{
+				particles[i]->SetOutside(true);
+			}
 		}
 	}
 }

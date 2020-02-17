@@ -26,7 +26,7 @@ void Dust::Update()
 	particle.setPosition(pos.x, pos.y);
 }
 
-void Dust::Render(sf::RenderWindow& window)
+void Dust::Render(sf::RenderWindow &window)
 {
 	window.draw(particle);
 }

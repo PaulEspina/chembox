@@ -6,6 +6,7 @@ public:
 	Dust();
 	Dust(Vec2 pos);
 	void Update();
-	void Render(sf::RenderWindow& window);
+	void Render(sf::RenderWindow &window);
+private:
 };
 
