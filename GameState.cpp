@@ -4,6 +4,7 @@ void GameState::Init(sf::RenderWindow& window)
 {
 	this->window = &window;
 	mouse_man = MouseManager();
+	key_man = KeyManager();
 	particles = NULL;
 }
 
@@ -14,21 +15,10 @@ void GameState::Update()
 	{
 		if(event.type == sf::Event::Closed)
 			window->close();
-		if(event.type == sf::Event::MouseMoved)
-		{
-			mouse.x = (float) event.mouseMove.x;
-			mouse.y = (float) event.mouseMove.y;
-		}
-		if(event.type == sf::Event::MouseButtonPressed)
-		{
-			mouse_man.keys[event.mouseButton.button] = true;
-		}
-		if(event.type == sf::Event::MouseButtonReleased)
-		{
-			mouse_man.keys[event.mouseButton.button] = false;
-		}
+		mouse = mouse_man.Update(event);
+		key_man.Update(event);
 	}
-	if(mouse_man.keys[sf::Mouse::Left])
+	if(mouse_man.ButtonDown(sf::Mouse::Left))
 	{
 		Particle *particle = new Dust(mouse);
 		Particle **temp = new Particle*[Particle::particle_count];

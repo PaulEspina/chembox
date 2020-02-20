@@ -39,9 +39,6 @@
     <ClCompile Include="Dust.cpp">
       <Filter>Source Files\Particle</Filter>
     </ClCompile>
-    <ClCompile Include="MouseManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vec2.h">
@@ -63,6 +60,9 @@
       <Filter>Header Files\Particle</Filter>
     </ClInclude>
     <ClInclude Include="MouseManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
