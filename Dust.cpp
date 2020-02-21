@@ -6,11 +6,12 @@ Dust::Dust()
 	particle.setFillColor(sf::Color(255, 221, 128, 255));
 }
 
-Dust::Dust(Vec2 pos)
+Dust::Dust(Vec2 pos, sf::RenderWindow &window)
 	:
 	Dust()
 {
 	this->pos = pos;
+	this->window = &window;
 	particle.setPosition(pos.x, pos.y);
 }
 
@@ -26,7 +27,7 @@ void Dust::Update()
 	particle.setPosition(pos.x, pos.y);
 }
 
-void Dust::Render(sf::RenderWindow &window)
+void Dust::Render()
 {
-	window.draw(particle);
+	window->draw(particle);
 }

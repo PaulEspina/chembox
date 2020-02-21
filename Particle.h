@@ -9,7 +9,7 @@ public:
 	Particle();
 	~Particle();
 	virtual void Update() = 0;
-	virtual void Render(sf::RenderWindow &window) = 0;
+	virtual void Render() = 0;
 	void ApplyForce(Vec2 force);
 	void ApplyGravity(Vec2 constant);
 	void ApplyFriction(float constant);
@@ -26,5 +26,6 @@ protected:
 	sf::RectangleShape particle;
 	float mass;
 	bool outside;
+	sf::RenderWindow *window;
 };
 

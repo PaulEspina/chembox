@@ -4,9 +4,9 @@ class Dust : public Particle
 {
 public:
 	Dust();
-	Dust(Vec2 pos);
+	Dust(Vec2 pos, sf::RenderWindow &window);
 	void Update();
-	void Render(sf::RenderWindow &window);
+	void Render();
 private:
 };
 
