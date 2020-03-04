@@ -2,11 +2,11 @@
 
 #include "Particle.h"
 
-class Dust : public Particle
+class Wood : public Particle
 {
 public:
-	Dust();
-	Dust(Vec2 pos, sf::RenderWindow &window);
+	Wood();
+	Wood(Vec2 pos, sf::RenderWindow &window);
 	void Update();
 	void Render();
 private:

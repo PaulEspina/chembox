@@ -4,6 +4,7 @@
 #include "MouseManager.h"
 #include "KeyManager.h"
 #include "Dust.h"
+#include "Wood.h"
 
 class GameState : public State
 {

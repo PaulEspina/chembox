@@ -20,7 +20,7 @@ void GameState::Update()
 	}
 	if(mouse_man.ButtonDown(sf::Mouse::Left))
 	{
-		Particle *particle = new Dust(mouse, *window);
+		Particle *particle = new Wood(mouse, *window);
 		Particle **temp = new Particle*[Particle::particle_count];
 		for(unsigned int i = 0; i < Particle::particle_count - 1; i++)
 		{
@@ -29,6 +29,10 @@ void GameState::Update()
 		temp[Particle::particle_count - 1] = particle;
 		delete[] particles;
 		particles = temp;
+	}
+	if(mouse_man.ButtonDown(sf::Mouse::Right))
+	{
+		
 	}
 	if(Particle::particle_count > 0)
 	{
