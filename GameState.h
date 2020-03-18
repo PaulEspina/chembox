@@ -1,6 +1,8 @@
 #pragma once
 #include "State.h"
 
+#include <vector>
+
 #include "MouseManager.h"
 #include "KeyManager.h"
 #include "Dust.h"
@@ -12,13 +14,13 @@ public:
 	void Init(sf::RenderWindow &window);
 	void Update();
 	void Render();
-	void CleanUp();
 private:
 	void CheckBounds();
 	MouseManager mouse_man;
 	KeyManager key_man;
 	sf::RenderWindow *window = NULL;
-	Particle **particles;
+	std::vector<Particle*> particles;
+	//Particle **particles;
 	Vec2 mouse;
 };
 

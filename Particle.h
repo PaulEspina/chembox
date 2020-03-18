@@ -7,7 +7,6 @@ class Particle
 public:
 	// FUNCTIONS
 	Particle();
-	~Particle();
 	virtual void Update() = 0;
 	virtual void Render() = 0;
 	void ApplyForce(Vec2 force);
@@ -19,7 +18,6 @@ public:
 	// Setters
 	void SetOutside(bool value) { outside = value; }
 	// VARIABLES
-	static unsigned int particle_count;
 	Vec2 pos, vel, accel;
 protected:
 	// VARIABLES

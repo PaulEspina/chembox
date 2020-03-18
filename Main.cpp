@@ -16,6 +16,5 @@ int main()
         state->Update();
         state->Render();
     }
-    state->CleanUp();
     return EXIT_SUCCESS;
 }
