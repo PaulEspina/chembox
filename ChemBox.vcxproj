@@ -19,14 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Particle.cpp" />
-    <ClCompile Include="src\PlayState.cpp" />
+    <ClCompile Include="src\Particle\Particle.cpp" />
+    <ClCompile Include="src\State\PlayState.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Particle.h" />
-    <ClInclude Include="src\PlayState.h" />
-    <ClInclude Include="src\State.h" />
+    <ClInclude Include="src\Particle\Particle.h" />
+    <ClInclude Include="src\State\PlayState.h" />
+    <ClInclude Include="src\State\State.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
