@@ -21,12 +21,18 @@
     <ClCompile Include="src\PlayState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Particle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\PlayState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Particle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

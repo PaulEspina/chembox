@@ -19,10 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Particle.cpp" />
     <ClCompile Include="src\PlayState.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Particle.h" />
     <ClInclude Include="src\PlayState.h" />
     <ClInclude Include="src\State.h" />
   </ItemGroup>
