@@ -18,9 +18,13 @@ void PlayState::init(sf::Window &window)
 	particles.clear();
 }
 
-void PlayState::tick(KeyManager &keyManager)
+void PlayState::tick(KeyManager &keyManager, MouseManager &mouseManager)
 {
-	if(keyManager.isDown(sf::Keyboard::W))
+	/*if(keyManager.isDown(sf::Keyboard::W))
+	{
+		particles.push_back(new Particle(sf::Vector2f(sf::Mouse::getPosition(*window))));
+	}*/
+	if(mouseManager.isDown(sf::Mouse::Button::Left))
 	{
 		particles.push_back(new Particle(sf::Vector2f(sf::Mouse::getPosition(*window))));
 	}

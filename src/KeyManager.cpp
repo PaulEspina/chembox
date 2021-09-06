@@ -8,7 +8,6 @@ KeyManager::KeyManager()
         keyDown.push_back(false);
         keyReleased.push_back(false);
     }
-    init();
 }
 
 void KeyManager::init()
