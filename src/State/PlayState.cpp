@@ -1,7 +1,5 @@
 #include "PlayState.h"
 
-#include <iostream>
-
 PlayState::PlayState()
 {
 }
@@ -20,24 +18,20 @@ void PlayState::init(sf::Window &window)
 	particles.clear();
 }
 
-void PlayState::tick(sf::Event &event)
+void PlayState::tick(KeyManager &keyManager)
 {
-	if(event.type == sf::Event::MouseButtonPressed)
+	if(keyManager.isDown(sf::Keyboard::W))
 	{
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		{
-			particles.push_back(new Particle(sf::Vector2f(sf::Mouse::getPosition(*window))));
-		}
-		if(sf::Mouse::isButtonPressed(sf::Mouse::Right))
-		{
-			init(*window);
-		}
+		particles.push_back(new Particle(sf::Vector2f(sf::Mouse::getPosition(*window))));
+	}
+	if(keyManager.isPressed(sf::Keyboard::R))
+	{
+		init(*window);
 	}
 }
 
 void PlayState::update()
 {
-	std::cout << particles.size() << std::endl;
 	for(Particle *particle : particles)
 	{
 		particle->update();

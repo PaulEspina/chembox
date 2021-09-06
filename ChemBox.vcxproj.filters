@@ -24,6 +24,9 @@
     <ClCompile Include="src\Particle\Particle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\KeyManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\State\State.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Particle\Particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KeyManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
