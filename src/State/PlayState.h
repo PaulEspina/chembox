@@ -5,6 +5,7 @@
 
 #include "State.h"
 #include "Particle/Particle.h"
+#include "Field.h"
 
 class PlayState : public State
 {
@@ -16,5 +17,6 @@ public:
 	void update() override;
 	void render(sf::RenderWindow &window) override;
 private:
+	Field *field;
 	std::vector<Particle*> particles;
 };

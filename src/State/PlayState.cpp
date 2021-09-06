@@ -2,10 +2,12 @@
 
 PlayState::PlayState()
 {
+	field = new Field(sf::Vector2f(0, 0), sf::Vector2f(800, 600), sf::Vector2f(2, 2));
 }
 
 PlayState::~PlayState()
 {
+	delete field;
 	for(Particle *particle : particles)
 	{
 		delete particle;
@@ -14,6 +16,7 @@ PlayState::~PlayState()
 
 void PlayState::init()
 {
+	field->init();
 	particles.clear();
 }
 
@@ -31,6 +34,7 @@ void PlayState::tick(KeyManager &keyManager, MouseManager &mouseManager)
 
 void PlayState::update()
 {
+	field->update();
 	for(Particle *particle : particles)
 	{
 		particle->update();
@@ -39,6 +43,7 @@ void PlayState::update()
 
 void PlayState::render(sf::RenderWindow &window)
 {
+	field->render(window);
 	for(Particle *particle : particles)
 	{
 		particle->render(window);
