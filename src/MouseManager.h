@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Window/Event.hpp>
+#include <SFML/Graphics.hpp>
 
 #include <vector>
 #include <algorithm>
@@ -14,7 +14,13 @@ public:
     bool isPressed(sf::Mouse::Button mouseButton);
     bool isDown(sf::Mouse::Button mouseButton);
     bool isReleased(sf::Mouse::Button mouseButton);
+    // Setters
+    void setTargetWindow(sf::RenderWindow &window);
+    // Getters
+    sf::Vector2i getPos();
 private:
+    sf::RenderWindow *window;
+    sf::Vector2i pos;
     std::vector<bool> mousePressed;
     std::vector<bool> mouseDown;
     std::vector<bool> mouseReleased;

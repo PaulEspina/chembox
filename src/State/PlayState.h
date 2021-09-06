@@ -11,11 +11,10 @@ class PlayState : public State
 public:
 	PlayState();
 	~PlayState();
-	void init(sf::Window &window) override;
+	void init() override;
 	void tick(KeyManager &keyManager, MouseManager &mouseManager) override;
 	void update() override;
 	void render(sf::RenderWindow &window) override;
 private:
-	sf::Window *window;
 	std::vector<Particle*> particles;
 };
