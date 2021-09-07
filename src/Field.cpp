@@ -22,12 +22,12 @@ void Field::create(sf::Vector2f pos, sf::Vector2f rectSize, sf::Vector2f cellSiz
     rect.setFillColor(sf::Color(0, 0, 0, 0));
     for(unsigned int i = 0; i < dimension.y; i++)
     {
-        std::vector<char> row;
+        std::vector<unsigned int> row;
         for(unsigned int j = 0; j < dimension.x; j++)
         {
-            row.push_back('0');
+            row.push_back(0);
             sf::RectangleShape cell(cellSize);
-            cell.setPosition(pos + sf::Vector2f(i * cellSize.x, j * cellSize.y));
+            cell.setPosition(pos + sf::Vector2f(j * cellSize.x, i * cellSize.y));
             cell.setFillColor(sf::Color(0, 0, 0, 0));
             cellRects.push_back(cell);
         }
@@ -45,16 +45,76 @@ void Field::init()
 
 void Field::update()
 {
+    init();
+    for(Particle *particle : particles)
+    {
+        particleField[(int) particle->getPos().y][(int) particle->getPos().x] = particle->getID();
+    }
+    for(unsigned int i = 0; i < particleField.size(); i++)
+    {
+        for(unsigned int j = 0; j < particleField[i].size(); j++)
+        {
+            switch(particleField[i][j])
+            {
+            case 0:
+                cellRects[i * particleField[i].size() + j].setFillColor(sf::Color(0, 0, 0, 0));
+            case 1:
+                cellRects[i * particleField[i].size() + j].setFillColor(sf::Color::White);
+            }
+        }
+    }
 }
 
 void Field::render(sf::RenderWindow &window)
 {
     window.draw(rect);
-    for(unsigned int i = 0; i < cellRects.size(); i++)
+    for(Particle *particle : particles)
     {
-        if(particleField[i / dimension.x][i % dimension.x] != '0')
-        {
-            window.draw(cellRects[i]);
-        }
+        window.draw(cellRects[(int) particle->getPos().y * dimension.x + (int) particle->getPos().x]);
     }
+}
+
+void Field::addParticle(Particle &particle)
+{
+    particles.push_back(&particle);
+}
+
+sf::Vector2f Field::getPos()
+{
+    return pos;
+}
+
+sf::Vector2f Field::getRectSize()
+{
+    return rectSize;
+}
+
+sf::Vector2u Field::getDimension()
+{
+    return dimension;
+}
+
+sf::Vector2f Field::getCellSize()
+{
+    return cellSize;
+}
+
+void Field::setPos(sf::Vector2f pos)
+{
+    this->pos = pos;
+}
+
+void Field::setRectSize(sf::Vector2f rectSize)
+{
+    this->rectSize = rectSize;
+}
+
+void Field::setDimension(sf::Vector2u dimension)
+{
+    this->dimension = dimension;
+}
+
+void Field::setCellSize(sf::Vector2f cellSize)
+{
+    this->cellSize = cellSize;
 }

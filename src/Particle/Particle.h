@@ -11,13 +11,13 @@ public:
 	Particle(sf::Vector2f pos, sf::Vector2f vel = sf::Vector2f(0, 0), sf::Vector2f acc = sf::Vector2f(0, 0));
 	virtual ~Particle();
 	virtual void update();
-	virtual void render(sf::RenderWindow &window);
 
+	// Getters
+	unsigned int getID();
 private:
 	virtual void init(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f acc);
 	static const unsigned int size = 2;
 	const char *label;
-
-	sf::RectangleShape rect;
+	const unsigned int id = 1;
 };
 
