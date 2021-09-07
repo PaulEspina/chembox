@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Matter.cpp" />
     <ClCompile Include="src\Field.cpp" />
     <ClCompile Include="src\MouseManager.cpp" />
     <ClCompile Include="src\KeyManager.cpp" />
@@ -27,6 +28,7 @@
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Matter.h" />
     <ClInclude Include="src\Field.h" />
     <ClInclude Include="src\MouseManager.h" />
     <ClInclude Include="src\KeyManager.h" />
