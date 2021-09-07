@@ -35,18 +35,22 @@ void Field::create(sf::Vector2f pos, sf::Vector2f rectSize, sf::Vector2f cellSiz
     }
 }
 
-void Field::init()
+void Field::init(std::vector<Particle *> &particles)
 {
+    this->particles = &particles;
     for(unsigned int i = 0; i < dimension.y; i++)
     {
-        std::fill(particleField[i].begin(), particleField[i].end(), '0');
+        std::fill(particleField[i].begin(), particleField[i].end(), 0);
     }
 }
 
 void Field::update()
 {
-    init();
-    for(Particle *particle : particles)
+    for(unsigned int i = 0; i < dimension.y; i++)
+    {
+        std::fill(particleField[i].begin(), particleField[i].end(), 0);
+    }
+    for(Particle *particle : *particles)
     {
         particleField[(int) particle->getPos().y][(int) particle->getPos().x] = particle->getID();
     }
@@ -56,8 +60,8 @@ void Field::update()
         {
             switch(particleField[i][j])
             {
-            case 0:
-                cellRects[i * particleField[i].size() + j].setFillColor(sf::Color(0, 0, 0, 0));
+            /*case 0:
+                cellRects[i * particleField[i].size() + j].setFillColor(sf::Color(0, 0, 0, 0));*/
             case 1:
                 cellRects[i * particleField[i].size() + j].setFillColor(sf::Color::White);
             }
@@ -68,15 +72,10 @@ void Field::update()
 void Field::render(sf::RenderWindow &window)
 {
     window.draw(rect);
-    for(Particle *particle : particles)
+    for(Particle *particle : *particles)
     {
         window.draw(cellRects[(int) particle->getPos().y * dimension.x + (int) particle->getPos().x]);
     }
-}
-
-void Field::addParticle(Particle &particle)
-{
-    particles.push_back(&particle);
 }
 
 sf::Vector2f Field::getPos()

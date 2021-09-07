@@ -16,7 +16,7 @@ PlayState::~PlayState()
 
 void PlayState::init()
 {
-	field->init();
+	field->init(particles);
 	particles.clear();
 }
 
@@ -27,7 +27,6 @@ void PlayState::tick(KeyManager &keyManager, MouseManager &mouseManager)
 		sf::Vector2f pos(mouseManager.getPos().x / field->getCellSize().x, mouseManager.getPos().y / field->getCellSize().y);
 		Particle *particle = new Particle(pos);
 		particles.push_back(particle);
-		field->addParticle(*particle);
 	}
 	if(keyManager.isPressed(sf::Keyboard::R))
 	{

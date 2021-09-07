@@ -11,10 +11,9 @@ class Field
 public:
     Field();
     Field(sf::Vector2f pos, sf::Vector2f rectSize, sf::Vector2f cellSize);
-    void init();
+    void init(std::vector<Particle*> &particles);
     void update();
     void render(sf::RenderWindow &window);
-    void addParticle(Particle &particle);
     
     // Getters
     sf::Vector2f getPos();
@@ -37,6 +36,6 @@ private:
     std::vector<std::vector<unsigned int>> particleField;
     sf::RectangleShape rect;
     std::vector<sf::RectangleShape> cellRects;
-    std::vector<Particle*> particles;
+    std::vector<Particle*> *particles;
 };
 
