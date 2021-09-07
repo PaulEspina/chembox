@@ -17,9 +17,9 @@ Particle::~Particle()
 void Particle::init(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f acc)
 {
 	label = "PARTICLE";
-	this->pos = pos;
-	this->vel = vel;
-	this->acc = acc;
+	setPos(pos);
+	setVel(vel);
+	setAcc(acc);
 	rect.setSize(sf::Vector2f(size, size));
 	rect.setPosition(pos);
 	rect.setFillColor(sf::Color::White);
@@ -27,8 +27,7 @@ void Particle::init(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f acc)
 
 void Particle::update()
 {
-	vel += acc;
-	pos += vel;
+	Matter::update();
 }
 
 void Particle::render(sf::RenderWindow &window)

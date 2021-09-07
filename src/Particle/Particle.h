@@ -2,7 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
-class Particle
+#include "Matter.h"
+
+class Particle : public Matter
 {
 public:
 	Particle();
@@ -10,14 +12,12 @@ public:
 	virtual ~Particle();
 	virtual void update();
 	virtual void render(sf::RenderWindow &window);
+
 private:
 	virtual void init(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f acc);
 	static const unsigned int size = 2;
 	const char *label;
 
 	sf::RectangleShape rect;
-	sf::Vector2f pos;
-	sf::Vector2f vel;
-	sf::Vector2f acc;
 };
 
