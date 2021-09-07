@@ -20,10 +20,10 @@ void Field::create(sf::Vector2f pos, sf::Vector2f rectSize, sf::Vector2f cellSiz
     rect.setPosition(pos);
     rect.setSize(rectSize);
     rect.setFillColor(sf::Color(0, 0, 0, 0));
-    for(unsigned int i = 0; i < dimension.x; i++)
+    for(unsigned int i = 0; i < dimension.y; i++)
     {
         std::vector<char> row;
-        for(unsigned int j = 0; j < dimension.y; j++)
+        for(unsigned int j = 0; j < dimension.x; j++)
         {
             row.push_back('0');
             sf::RectangleShape cell(cellSize);
@@ -37,7 +37,7 @@ void Field::create(sf::Vector2f pos, sf::Vector2f rectSize, sf::Vector2f cellSiz
 
 void Field::init()
 {
-    for(unsigned int i = 0; i < dimension.x; i++)
+    for(unsigned int i = 0; i < dimension.y; i++)
     {
         std::fill(particleField[i].begin(), particleField[i].end(), '0');
     }
@@ -50,8 +50,11 @@ void Field::update()
 void Field::render(sf::RenderWindow &window)
 {
     window.draw(rect);
-    for(sf::RectangleShape &cell : cellRects)
+    for(unsigned int i = 0; i < cellRects.size(); i++)
     {
-        window.draw(cell);
+        if(particleField[i / dimension.x][i % dimension.x] != '0')
+        {
+            window.draw(cellRects[i]);
+        }
     }
 }
