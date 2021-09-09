@@ -19,7 +19,6 @@ void MouseManager::init()
 
 void MouseManager::tick(sf::Event event)
 {
-    pos = sf::Mouse::getPosition(*window);
     std::fill(mousePressed.begin(), mousePressed.end(), false);
     std::fill(mouseReleased.begin(), mouseReleased.end(), false);
     if(event.type == sf::Event::MouseButtonPressed)
@@ -47,14 +46,4 @@ bool MouseManager::isDown(sf::Mouse::Button mouseButton)
 bool MouseManager::isReleased(sf::Mouse::Button mouseButton)
 {
     return mouseReleased[mouseButton];
-}
-
-void MouseManager::setTargetWindow(sf::RenderWindow &window)
-{
-    this->window = &window;
-}
-
-sf::Vector2i MouseManager::getPos()
-{
-    return pos;
 }
