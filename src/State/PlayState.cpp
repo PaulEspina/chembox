@@ -12,20 +12,25 @@ PlayState::~PlayState()
 	}
 }
 
-void PlayState::init()
+void PlayState::init(sf::Window &window)
 {
+	this->window = &window;
 	particles.clear();
 }
 
 void PlayState::tick(KeyManager &keyManager, MouseManager &mouseManager)
 {
+	/*if(keyManager.isDown(sf::Keyboard::W))
+	{
+		particles.push_back(new Particle(sf::Vector2f(sf::Mouse::getPosition(*window))));
+	}*/
 	if(mouseManager.isDown(sf::Mouse::Button::Left))
 	{
-		particles.push_back(new Particle(sf::Vector2f(mouseManager.getPos())));
+		particles.push_back(new Particle(sf::Vector2f(sf::Mouse::getPosition(*window))));
 	}
 	if(keyManager.isPressed(sf::Keyboard::R))
 	{
-		init();
+		init(*window);
 	}
 }
 
