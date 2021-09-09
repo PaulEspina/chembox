@@ -14,25 +14,21 @@ Particle::~Particle()
 {
 }
 
+unsigned int Particle::getID()
+{
+	return id;
+}
+
 void Particle::init(sf::Vector2f pos, sf::Vector2f vel, sf::Vector2f acc)
 {
 	label = "PARTICLE";
-	this->pos = pos;
-	this->vel = vel;
-	this->acc = acc;
-	rect.setSize(sf::Vector2f(size, size));
-	rect.setPosition(pos);
-	rect.setFillColor(sf::Color::White);
+	setPos(pos);
+	setVel(vel);
+	setAcc(acc);
 }
 
 void Particle::update()
 {
-	vel += acc;
-	pos += vel;
-}
-
-void Particle::render(sf::RenderWindow &window)
-{
-	window.draw(rect);
+	Matter::update();
 }
 
